@@ -29,8 +29,16 @@ while running:
     #recuperer les projec du joueur
     for projectile in game.player.all_projectiles:
         projectile.move()
+
+    #move monster
+    for monster in game.all_monster:
+        monster.forward()
+
     #appliquer les projectile
     game.player.all_projectiles.draw(screen)
+
+    # appliquer les monster
+    game.all_monster.draw(screen)
 
     #check player left or right
     if game.pressed.get(pygame.K_RIGHT)and game.player.rect.x + game.player.rect.width < screen.get_width():
