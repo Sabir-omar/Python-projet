@@ -1,4 +1,5 @@
 import pygame
+import random
 
 class Projectile(pygame.sprite.Sprite):
 
@@ -27,9 +28,11 @@ class Projectile(pygame.sprite.Sprite):
         self.rotate()
 
         #verifier monster avec projetcil
-        if self.player.game.check_collision(self,self.player.game.all_monster):
+        for monster in self.player.game.check_collision(self,self.player.game.all_monster):
             #remove projetctile
             self.remove()
+            #infliger des degats
+            monster.damage(self.player.attack)
 
         # check projectile
         if self.rect.x > 1080:
